@@ -1,16 +1,12 @@
 package com.ben.linklist;
 
 import com.ben.common.ListNode;
+import com.ben.util.ListNodeUtil;
 import com.ben.util.PrintUtil;
 
 public class _0086_m_Partition_List {
     public static void main(String[] args) {
-        ListNode head = new ListNode(1);
-        head.next = new ListNode(4);
-        head.next.next = new ListNode(3);
-        head.next.next.next = new ListNode(2);
-        head.next.next.next.next = new ListNode(5);
-        head.next.next.next.next.next = new ListNode(2);
+        ListNode head = ListNodeUtil.create(1, 4, 3, 2, 5, 2);
 
         PrintUtil.printListNode(new Solution2().partition(head, 3));
     }
