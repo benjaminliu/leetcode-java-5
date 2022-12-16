@@ -26,19 +26,19 @@ public class _0105_m_Construct_Binary_Tree_from_Preorder_and_Inorder_Traversal {
             if (preStart > preEnd) {
                 return null;
             }
+            int cur = preorder[preStart];
+            TreeNode root = new TreeNode(cur);
+
             if (preStart == preEnd) {
                 //Only 1 node
-                return new TreeNode(preorder[preStart]);
+                return root;
             }
 
-            int cur = preorder[preStart];
-
-            TreeNode root = new TreeNode(cur);
             int idx = map.get(cur);
-            int count = idx - inStart;
+            int count = idx - inStart - 1;
 
-            root.left = helper(preorder, preStart + 1, preStart + count, inStart, map);
-            root.right = helper(preorder, preStart + count + 1, preEnd, idx + 1, map);
+            root.left = helper(preorder, preStart + 1, preStart + count + 1, inStart, map);
+            root.right = helper(preorder, preStart + count + 2, preEnd, idx + 1, map);
 
             return root;
         }
