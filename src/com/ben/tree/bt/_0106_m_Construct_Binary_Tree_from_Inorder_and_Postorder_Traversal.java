@@ -38,10 +38,13 @@ public class _0106_m_Construct_Binary_Tree_from_Inorder_and_Postorder_Traversal 
             }
 
             int idx = map.get(cur);
-            int count = idx - inStart - 1;
+            int lastDescendentIdx = idx - 1;
 
-            root.left = helper(postorder, postStart, postStart + count, inStart, map);
-            root.right = helper(postorder, postStart + count + 1, postEnd - 1, idx + 1, map);
+            //idxDiff = count - 1
+            int idxDiff = lastDescendentIdx - inStart;
+
+            root.left = helper(postorder, postStart, postStart + idxDiff, inStart, map);
+            root.right = helper(postorder, postStart + idxDiff + 1, postEnd - 1, idx + 1, map);
 
             return root;
         }
